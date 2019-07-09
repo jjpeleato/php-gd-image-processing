@@ -1,0 +1,63 @@
+############################
+# Ignore files/directories #
+############################
+/.idea
+/node_modules
+/vendor
+package-lock.json
+composer.lock
+yarn.lock
+yarn-error.log
+public/foo.php
+
+#############################
+# Logs, databases and misc. #
+#############################
+*.log
+*.sql
+*.sqlite
+*.sass-cache
+.bash_history
+.bash_logout
+.bashrc
+.cache
+.profile
+.mysql_history
+
+############
+# Packages #
+############
+*.7z
+*.dmg
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.bat
+
+###################
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+###################
+# Temporary files #
+###################
+*.swp
+*.swo
+*~
+
+######################
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.lock
