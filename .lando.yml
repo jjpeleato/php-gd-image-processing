@@ -45,14 +45,9 @@ tooling:
     service: node
   composer:
     service: appserver
-  dep:
-    service: appserver
-    desription: run deployer commands
-    cmd:
-      - "vendor/bin/dep"
   phpcs:
     service: appserver
-    desription: "Analyze code against the WordPress coding standards with PHP_CodeSniffer"
+    desription: "Analyze code against the PHP coding standards with PHP_CodeSniffer"
     cmd:
       - "vendor/bin/phpcs"
   phpcbf:
