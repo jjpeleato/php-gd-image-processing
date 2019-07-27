@@ -1,0 +1,56 @@
+{
+    "name": "php-gd-image-processing",
+    "version": "0.0.0",
+    "description": "Create and manipulate image files with PHP and the GD library of images.",
+    "keywords": [
+        "lando",
+        "node",
+        "npm",
+        "yarn",
+        "gulp-v4",
+        "stylelint",
+        "jshint",
+        "bootstrap",
+        "popper",
+        "sass",
+        "css3"
+    ],
+    "homepage": "https://www.jjpeleato.com/",
+    "author": "@jjpeleato",
+    "license": "GPL-2.0",
+    "main": "gulpfile.babel.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "gulp:dev": "gulp",
+        "gulp:prod": "env NODE_ENV=production gulp"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jjpeleato/php-gd-image-processing.git"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "@babel/register": "^7.5.5",
+        "autoprefixer": "^9.6.1",
+        "browser-sync": "^2.26.7",
+        "del": "^3.0.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^6.1.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^5.0.3",
+        "gulp-jshint": "^2.1.0",
+        "gulp-notify": "^3.2.0",
+        "gulp-rename": "^1.4.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-sourcemaps": "^2.6.4",
+        "gulp-stylelint": "^8.0.0",
+        "gulp-terser": "^1.2.0",
+        "gulp-uglifycss": "^1.1.0",
+        "gulp-util": "^3.0.8",
+        "jshint": "^2.10.2",
+        "stylelint": "^9.10.1",
+        "stylelint-config-standard": "^18.3.0",
+        "stylelint-scss": "^3.9.2"
+    }
+}

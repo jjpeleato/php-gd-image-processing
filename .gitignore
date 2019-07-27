@@ -9,6 +9,7 @@ composer.lock
 yarn.lock
 yarn-error.log
 public/foo.php
+public/assets
 
 #############################
 # Logs, databases and misc. #
