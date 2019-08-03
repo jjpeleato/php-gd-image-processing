@@ -14,7 +14,9 @@ const paths = {
         src: [
             './assets/scss/**/*.scss'
         ],
-        vendor: [],
+        vendor: [
+            './node_modules/normalize.css/normalize.css'
+        ],
         dest: theme + 'css/',
 		destVendor: theme + 'vendor/'
     },

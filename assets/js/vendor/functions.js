@@ -4,22 +4,22 @@
  * @returns {boolean|number}
  */
 function detectIE() {
-    var ua = window.navigator.userAgent;
+    let ua = window.navigator.userAgent;
 
-    var msie = ua.indexOf('MSIE ');
+    let msie = ua.indexOf('MSIE ');
     if (msie > 0) {
         // IE 10 or older => return version number
         return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
     }
 
-    var trident = ua.indexOf('Trident/');
+    let trident = ua.indexOf('Trident/');
     if (trident > 0) {
         // IE 11 => return version number
-        var rv = ua.indexOf('rv:');
+        let rv = ua.indexOf('rv:');
         return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
     }
 
-    var edge = ua.indexOf('Edge/');
+    let edge = ua.indexOf('Edge/');
     if (edge > 0) {
         // Edge (IE 12+) => return version number
         return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
@@ -35,9 +35,7 @@ function detectIE() {
  * @returns {boolean}
  */
 function isIE() {
-    var version = detectIE();
-
-    console.log(version);
+    let version = detectIE();
 
     if (version === false) {
         return false;
@@ -50,7 +48,7 @@ function isIE() {
  * Set IE class into html tag
  */
 function setIE() {
-    var html = jQuery('html');
+    let html = jQuery('html');
     html.removeClass('ie');
 
     if (isIE()) {
@@ -64,7 +62,7 @@ function setIE() {
  * @returns {boolean}
  */
 function isMobile() {
-    var width = jQuery(window).width();
+    let width = jQuery(window).width();
     return (width < 991);
 }
 
