@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-$base = __DIR__ . '/core/';
+$base = __DIR__ . '/';
 
 $folders = [
     'core'
