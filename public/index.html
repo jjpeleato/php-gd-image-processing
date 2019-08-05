@@ -70,11 +70,13 @@
 <!-- START: Main -->
 <main class="main">
     <div class="upload">
+        <p class="upload__info"><small>* Allowed JPEG, PNG files with a size of 5 MB.</small></p>
         <form class="upload__form" id="uploadForm" method="post" action="src" enctype="multipart/form-data">
             <input class="hidden" id="uploadInput" name="upload" title="Upload file" type="file">
             <button class="button" id="uploadButton" type="button"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
+            <button class="reset" id="uploadReset" type="reset"><i class="fas fa-ban"></i> Reset</button>
+            <button class="submit" id="uploadSubmit" type="submit"><i class="far fa-thumbs-up"></i> Submit</button>
         </form>
-        <p class="upload__info"><small>* Allowed JPEG, PNG files with a size of 5 MB.</small></p>
         <div class="upload__result"></div>
     </div>
 </main>

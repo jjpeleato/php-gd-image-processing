@@ -2,6 +2,6 @@
     $(document).ready(function () {
         // Write JavaScript or jQuery
         setIE();
-        upload();
+        uploadActions();
     });
 })(jQuery);

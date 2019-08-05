@@ -20,12 +20,29 @@
     }
 
     .button {
-      width: 100%;
+      background-color: $info-hover;
       display: block;
+      margin-top: 15px;
+    }
+
+    .reset {
+      background-color: $danger-hover;
+      display: none;
+      margin: 15px 0;
+    }
+
+    .submit {
+      background-color: $success-hover;
+      display: none;
       margin-bottom: 15px;
+    }
+
+    .button,
+    .submit,
+    .reset {
+      width: 100%;
       padding: 15px 0;
       cursor: pointer;
-      background-color: $info;
       color: $white;
       border: 0 none;
       border-radius: 0;
@@ -53,5 +70,24 @@
     display: block;
     font-size: 12px;
     font-weight: 500;
+  }
+
+  &__result {
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+
+    .error {
+      color: $danger;
+    }
+
+    .warning {
+      color: $warning;
+    }
+
+    .success {
+      color: $success;
+    }
   }
 }
