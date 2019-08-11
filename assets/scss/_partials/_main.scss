@@ -22,7 +22,7 @@
     .button {
       background-color: $info-hover;
       display: block;
-      margin-top: 15px;
+      margin: 15px 0;
     }
 
     .reset {
@@ -88,6 +88,12 @@
 
     .success {
       color: $success;
+    }
+
+    .error,
+    .warning,
+    .success {
+      margin-bottom: 5px;
     }
   }
 }
