@@ -10,26 +10,18 @@ namespace Application\Core;
 class JsonResponse
 {
     public $status;
-    public $message;
-    public $data = [];
-    public $statusCode;
-    public $result;
+    public $message = '';
 
     /**
      * JsonResponse constructor.
      *
      * @param $status
-     * @param string $message
-     * @param array $data
+     * @param $message
      */
-    public function __construct($status, $message = '', array $data = [])
+    public function __construct($status, $message)
     {
         $this->status = $status;
         $this->message = $message;
-        $this->data = $data;
-        $this->result = array(
-            'status' => $this->status
-        );
 
         echo $this->response();
     }
@@ -41,32 +33,38 @@ class JsonResponse
      */
     public function response()
     {
-        $statusCode = 200;
+        $result = [];
 
         //set the HTTP response code
         switch ($this->status)
         {
+            case "ok":
+                $statusCode = 200;
+                $statusMessage = 'OK';
+                break;
+            case "bad_request":
+                $statusCode = 400;
+                $statusMessage = 'Bad Request';
+                break;
             case "unauthorized":
                 $statusCode = 401;
+                $statusMessage = 'Unauthorized';
                 break;
             case "exception":
                 $statusCode = 500;
+                $statusMessage = 'Internal Server Error';
                 break;
         }
 
         //set the response header
         header("Content-Type: application/json");
-        header(sprintf('HTTP/1.1 %s %s', $statusCode, $this->status), true, $statusCode);
+        header(sprintf('HTTP/1.1 %s %s', $statusCode, $statusMessage), true, $statusCode);
 
         if ( $this->message != '')
         {
-            $this->result['message'] = $this->message;
+            $result['respond'] = $this->message;
         }
 
-        if ( count($this->data) > 0 ) {
-            $this->result['data'] = $this->data;
-        }
-
-        return json_encode($this->result);
+        return json_encode($result);
     }
 }

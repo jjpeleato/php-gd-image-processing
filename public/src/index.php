@@ -5,11 +5,9 @@ require_once __DIR__ . '/autoload.php';
 
 use Application\Core\JsonResponse;
 
-$student = array(
-    'name' => 'John Doe',
-    'course' => 'Software Engineering',
-    'level' => '200',
-    'collections' => ['books' => 'Intro to UML', 'music' => 'rap']
-);
+if (empty($_FILES['upload'])){
+    new JsonResponse('unauthorized', 'unauthorized');
+    exit();
+}
 
-new JsonResponse('unauthorized', 'unauthorized', $student);
+new JsonResponse('ok', 'Successfully uploaded images');
