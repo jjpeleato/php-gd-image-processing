@@ -36,76 +36,17 @@ function sizeFiles(size) {
 }
 
 /**
- * Upload file and send to endpoint
- *
- * @param data
- * @param dom
- */
-function upload(data, dom) {
-    var myRequestURL = '/src?timestamp=' + new Date().getTime();
-
-    jQuery.ajax({
-        type: 'POST',
-        url: myRequestURL,
-        data: data,
-        dataType: 'json',
-        crossDomain: true,
-        cache: false,
-        contentType: false,
-        processData: false,
-        beforeSend: function () {
-            dom.empty().append(
-                '<p class="warning">Starting process</p>'
-            );
-        },
-        success: function (result, status, xhr) {
-            let code = parseInt(result.status.code, 10);
-            let message = result.message;
-
-            switch (code) {
-                case 400:
-                    dom.empty().append(
-                        '<p class="error">' + message + '</p>'
-                    );
-                    break;
-                case 200:
-                    dom.empty().append(
-                        '<p class="success">' + message + '</p>'
-                    );
-                    break;
-            }
-        },
-        error: function (xhr, status, error) {
-            console.log('error', xhr, status, error);
-            dom.empty().append(
-                '<p class="error">' + percent + ' %</p>'
-            );
-        },
-        xhr: function () {
-            let xhr = jQuery.ajaxSettings.xhr();
-
-            xhr.upload.onprogress = function (evt) {
-                let percent = parseInt(evt.loaded / evt.total * 100);
-                dom.empty().append(
-                    '<p class="warning">' + percent + ' %</p>'
-                );
-            };
-            xhr.upload.onload = function () {
-                dom.empty().append(
-                    '<p class="warning">100 %</p>'
-                );
-            };
-
-            return xhr;
-        }
-    });
-}
-
-/**
  * Form events
  */
 function uploadActions() {
     let domResult = jQuery('.upload__result');
+
+    jQuery('#uploadReset').click(function () {
+        jQuery('#uploadButton').show();
+        jQuery('#uploadReset').hide();
+        jQuery('#uploadSubmit').hide();
+        domResult.empty();
+    });
 
     jQuery('#uploadButton').click(function () {
         jQuery('#uploadInput').trigger('click');
@@ -146,17 +87,48 @@ function uploadActions() {
         );
     });
 
-    jQuery('#uploadReset').click(function () {
-        jQuery('#uploadButton').show();
-        jQuery('#uploadReset').hide();
-        jQuery('#uploadSubmit').hide();
-        domResult.empty();
-    });
+    jQuery('#uploadForm').submit(function (e) {
+        e.preventDefault(); //prevent default action
 
-    jQuery('#uploadSubmit').click(function () {
-        let form = jQuery('#uploadForm');
-        let formData = new FormData(form);
-        upload(formData, domResult);
+        let url = jQuery(this).attr("action"); // get form action url
+        let myRequestURL = url + '/?timestamp=' + new Date().getTime();
+        let method = jQuery(this).attr("method"); // get form GET/POST method
+        let formData = new FormData(jQuery(this)[0]); // Encode form elements for submission
+
+        jQuery.ajax({
+            type: method,
+            url: myRequestURL,
+            data: formData,
+            dataType: 'json',
+            crossDomain: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                domResult.empty().append('<p class="warning">Starting process</p>');
+            },
+            success: function (result, status, xhr) {
+                console.log(result, status, xhr);
+            },
+            error: function (xhr, status, error) {
+                console.log('error', xhr, status, error);
+                let respond = xhr.responseJSON.respond;
+                domResult.empty().append('<p class="error">'+respond+'</p>');
+            },
+            xhr: function () {
+                let xhr = jQuery.ajaxSettings.xhr();
+
+                xhr.upload.onprogress = function (evt) {
+                    let percent = parseInt(evt.loaded / evt.total * 100);
+                    domResult.empty().append('<p class="warning">' + percent + ' %</p>');
+                };
+                xhr.upload.onload = function () {
+                    domResult.empty().append('<p class="warning">100 %</p>');
+                };
+
+                return xhr;
+            }
+        });
 
         return false;
     });

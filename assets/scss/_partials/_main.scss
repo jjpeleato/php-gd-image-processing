@@ -28,13 +28,13 @@
     .reset {
       background-color: $danger-hover;
       display: none;
-      margin: 15px 0;
+      margin-bottom: 15px;
     }
 
     .submit {
       background-color: $success-hover;
       display: none;
-      margin-bottom: 15px;
+      margin: 15px 0;
     }
 
     .button,
