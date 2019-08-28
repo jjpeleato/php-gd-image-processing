@@ -11,12 +11,6 @@ Require valid-user
     deny from all
 </files>
 
-# wp-config.php secure
-<files wp-config.php>
-    order allow,deny
-    deny from all
-</files>
-
 # .git secure
 <files .git>
     order allow,deny
