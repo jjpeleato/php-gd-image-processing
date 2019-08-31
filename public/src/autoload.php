@@ -4,7 +4,8 @@ declare(strict_types=1);
 $base = __DIR__ . '/';
 
 $folders = [
-    'core'
+    'core',
+    'inc',
 ];
 
 foreach($folders as $f)
