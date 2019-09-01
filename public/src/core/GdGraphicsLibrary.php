@@ -9,10 +9,25 @@ namespace Application\Core;
  */
 class GdGraphicsLibrary
 {
-    private $image;
-    private $type;
-    private $width;
-    private $height;
+    /**
+     * @var resource $image
+     */
+    public $image;
+
+    /**
+     * @var string $type
+     */
+    public $type;
+
+    /**
+     * @var int $width
+     */
+    public $width;
+
+    /**
+     * @var int $height
+     */
+    public $height;
 
     /**
      * @param string $path
@@ -20,7 +35,6 @@ class GdGraphicsLibrary
     function setImage(string $path)
     {
         $data = getimagesize($path);
-
         $this->width = $data[0];
         $this->height = $data[1];
         $this->type = $data[2];
@@ -47,10 +61,10 @@ class GdGraphicsLibrary
     }
 
     /**
-     * @param $path
+     * @param string $path
      * @param int $quality
      */
-    function save($path, $quality = 100)
+    function save(string $path, int $quality = 100)
     {
         switch($this->type){
             case IMAGETYPE_GIF:
@@ -67,11 +81,11 @@ class GdGraphicsLibrary
     }
 
     /**
-     * @param $path
-     * @param $type
+     * @param string $path
+     * @param int $type
      * @param int $quality
      */
-    function saveByType($path, $type, $quality = 100)
+    function saveByType(string $path, int $type, int $quality = 100)
     {
         switch($type){
             case '1':
@@ -106,16 +120,16 @@ class GdGraphicsLibrary
     }
 
     /**
-     * @param $value
-     * @param $prop
+     * @param int $value
+     * @param string $prop
      */
-    function resize($value, $prop)
+    function resize(int $value, string $prop)
     {
-        $prop_value = ($prop == 'width') ? $this->width : $this->height;
-        $prop_versus = ($prop == 'width') ? $this->height : $this->width;
+        $prop_value = ($prop === 'width') ? $this->width : $this->height;
+        $prop_versus = ($prop === 'width') ? $this->height : $this->width;
 
         $pcent = $value / $prop_value;
-        $value_versus = $prop_versus * $pcent;
+        $value_versus = intval($prop_versus * $pcent);
 
         $image = ($prop == 'width') ? imagecreatetruecolor($value, $value_versus)
             : imagecreatetruecolor($value_versus, $value);
@@ -157,15 +171,15 @@ class GdGraphicsLibrary
     }
 
     /**
-     * @param $value
+     * @param int $value
      */
-    function thumbnail($value)
+    function thumbnail(int $value)
     {
         $prop_value = $this->width;
         $prop_versus = $this->width;
 
         $pcent = $value / $prop_value;
-        $value_versus = $prop_versus * $pcent;
+        $value_versus = intval($prop_versus * $pcent);
 
         $image = imagecreatetruecolor($value, $value_versus);
         imagecopyresampled(
@@ -187,9 +201,9 @@ class GdGraphicsLibrary
     }
 
     /**
-     * @param $value
+     * @param int $value
      */
-    function thumbnailPlus($value)
+    function thumbnailPlus(int $value)
     {
         if($this->width > $this->height){
             $this->resize($value-50, 'width');
@@ -216,11 +230,11 @@ class GdGraphicsLibrary
     }
 
     /**
-     * @param $cwidth
-     * @param $cheight
+     * @param int $cwidth
+     * @param int $cheight
      * @param string $pos
      */
-    function crop($cwidth, $cheight, $pos = 'center')
+    function crop(int $cwidth, int $cheight, string $pos = 'center')
     {
         if($cwidth > $cheight){
             $this->resize($cwidth, 'width');

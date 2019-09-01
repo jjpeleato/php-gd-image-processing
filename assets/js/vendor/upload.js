@@ -108,10 +108,10 @@ function uploadActions() {
                 domResult.empty().append('<p class="warning">Starting process</p>');
             },
             success: function (result, status, xhr) {
-                console.log(result, status, xhr);
+                let respond = result.respond;
+                domResult.empty().append('<p class="success">'+respond+'</p>');
             },
             error: function (xhr, status, error) {
-                console.log('error', xhr, status, error);
                 let respond = xhr.responseJSON.respond;
                 domResult.empty().append('<p class="error">'+respond+'</p>');
             },

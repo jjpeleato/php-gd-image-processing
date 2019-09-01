@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/autoload.php';
 
+use Application\Core\GdGraphicsLibrary;
 use Application\Core\JsonResponse;
 
 /**
@@ -37,11 +38,67 @@ if ($size <= $file['size']) {
  * Upload file process
  */
 $path = $_SERVER['DOCUMENT_ROOT'].'/upload/';
-$name = $path . (new DateTime())->getTimestamp() . $type;
-
-if (!move_uploaded_file($file['tmp_name'], $name)) {
+$baseName = $path . (new DateTime())->getTimestamp();
+$baseFile = $baseName . $type;
+if (!move_uploaded_file($file['tmp_name'], $baseFile)) {
     new JsonResponse('exception', 'File upload failed.');
     exit();
 }
+
+/**
+ * Initialize GD library
+ */
+$gd = new GdGraphicsLibrary();
+
+/**
+ * Resize: width
+ */
+$gd->setImage($baseFile);
+$resizeWidth = $baseName . '_resize_width' . $type;
+if ($gd->width > 1000) {
+    $gd->resize(1000, "width");
+}
+$gd->save($resizeWidth, 90);
+$gd->deleteImage();
+
+/**
+ * Resize: height
+ */
+$gd->setImage($baseFile);
+$resizeHeight = $baseName . '_resize_height' . $type;
+if ($gd->height > 500) {
+    $gd->resize(500, "height");
+}
+$gd->save($resizeHeight, 90);
+$gd->deleteImage();
+
+/**
+ * Thumbnail
+ */
+$gd->setImage($baseFile);
+$thumbnail = $baseName . '_thumbnail' . $type;
+$gd->thumbnail(300);
+$gd->save($thumbnail, 90);
+$gd->deleteImage();
+
+/**
+ * Thumbnail Plus
+ */
+$gd->setImage($baseFile);
+$thumbnailPlus = $baseName . '_thumbnail_plus' . $type;
+$gd->thumbnailPlus(500);
+$gd->save($thumbnailPlus, 90);
+$gd->deleteImage();
+
+/**
+ * Crop
+ */
+$gd->setImage($baseFile);
+$crop = $baseName . '_crop' . $type;
+if ($gd->width>768 && $gd->height>768) {
+    $gd->crop(768, 768, 'center');
+}
+$gd->save($crop, 90);
+$gd->deleteImage();
 
 new JsonResponse('ok', 'Successfully uploaded images');
