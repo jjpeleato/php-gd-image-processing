@@ -10,6 +10,8 @@ yarn.lock
 yarn-error.log
 public/foo.php
 public/assets
+public/upload/*
+!public/upload/.gitkeep
 
 #############################
 # Logs, databases and misc. #

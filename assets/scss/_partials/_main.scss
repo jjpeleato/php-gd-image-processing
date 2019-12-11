@@ -1,2 +1,110 @@
 /* Main
 --------------------------------------------------------------------------------------------------------------------- */
+
+.main {
+  width: 100%;
+  height: 100%;
+  border: 10px solid $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload {
+  width: 100%;
+  max-width: 280px;
+
+  &__form {
+    .hidden {
+      display: none;
+    }
+
+    .button {
+      background-color: $info-hover;
+      display: block;
+      margin: 15px 0;
+    }
+
+    .reset {
+      background-color: $danger-hover;
+      display: none;
+      margin-bottom: 15px;
+    }
+
+    .submit {
+      background-color: $success-hover;
+      display: none;
+      margin: 15px 0;
+    }
+
+    .button,
+    .submit,
+    .reset {
+      width: 100%;
+      padding: 15px 0;
+      cursor: pointer;
+      color: $white;
+      border: 0 none;
+      border-radius: 0;
+      box-shadow: none;
+      text-transform: uppercase;
+      font-size: 15px;
+
+      @include transition(0.3s, all, linear);
+
+      i {
+        margin-right: 5px;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $white;
+        color: $black;
+      }
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__result {
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+
+    .error {
+      color: $danger;
+    }
+
+    .warning {
+      color: $warning;
+    }
+
+    .success {
+      color: $success;
+    }
+
+    .error,
+    .warning,
+    .success {
+      margin-bottom: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}

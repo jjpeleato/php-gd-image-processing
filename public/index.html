@@ -14,7 +14,7 @@
 <head>
     <!-- Assets -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Title -->
@@ -55,32 +55,39 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <!-- Assets CSS: Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Assets ICONs: fontawesome -->
+    <script src="https://kit.fontawesome.com/a9e749bc32.js"></script>
     <!-- Assets CSS: Style -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body oncontextmenu="return true" onkeydown="return true">
-<!-- noscript -->
+<!-- START: noscript -->
 <noscript>
     <p>The page you are viewing requires JavaScript to work. If you have intentionally disabled it, please enable it again.</p>
     <p>La página que estás viendo requiere para su correcto funcionamiento el uso de JavaScript. Si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
 </noscript>
-
-<!-- START: Main -->
-<main class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Hello World!</h1>
-        </div>
+<!-- END: noscript -->
+<!-- START: main -->
+<main class="main">
+    <div class="upload">
+        <p class="upload__info"><small>* Allowed JPEG, PNG files with a size of 5 MB.</small></p>
+        <form class="upload__form" id="uploadForm" method="post" action="src" enctype="multipart/form-data">
+            <input class="hidden" id="uploadInput" name="upload" title="Upload file" type="file" accept="image/x-png, image/jpeg, image/jpg">
+            <button class="button" id="uploadButton" type="button"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
+            <button class="submit" id="uploadSubmit" type="submit"><i class="far fa-thumbs-up"></i> Submit</button>
+            <button class="reset" id="uploadReset" type="reset"><i class="fas fa-ban"></i> Reset</button>
+        </form>
+        <div class="upload__result"></div>
     </div>
 </main>
-<!-- END: Main -->
-
+<!-- END: main -->
+<!-- START: footer -->
+<footer class="footer">
+    <p class="footer__text">Developed with <i class="far fa-heart"></i> by <a class="footer__link" href="https://www.jjpeleato.com/" title="JJPeleato" target="_blank">@jjpeleato</a></p>
+</footer>
+<!-- END: footer -->
 <!-- Assets JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>

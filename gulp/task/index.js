@@ -24,7 +24,7 @@ gulp.task(
 	gulp.series(
 		clean,
 		validateScss,
-		css,
+        cssWithConcat,
 		fontAssets,
 		validateJs,
 		js,
