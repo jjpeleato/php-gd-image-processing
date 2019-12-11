@@ -30,6 +30,8 @@ class GdGraphicsLibrary
     public $height;
 
     /**
+     * Set the image
+     *
      * @param string $path
      */
     function setImage(string $path)
@@ -53,7 +55,7 @@ class GdGraphicsLibrary
     }
 
     /**
-     *
+     * Delete the image
      */
     function deleteImage()
     {
@@ -61,6 +63,8 @@ class GdGraphicsLibrary
     }
 
     /**
+     * Save the image
+     *
      * @param string $path
      * @param int $quality
      */
@@ -81,6 +85,12 @@ class GdGraphicsLibrary
     }
 
     /**
+     * Save by type
+     *
+     * 1 - gif
+     * 2 - jpeg
+     * 3 - png
+     *
      * @param string $path
      * @param int $type
      * @param int $quality
@@ -102,7 +112,7 @@ class GdGraphicsLibrary
     }
 
     /**
-     *
+     * Show the image
      */
     function show()
     {
@@ -120,6 +130,8 @@ class GdGraphicsLibrary
     }
 
     /**
+     * Automatically resize the image
+     *
      * @param int $value
      * @param string $prop
      */
@@ -171,6 +183,8 @@ class GdGraphicsLibrary
     }
 
     /**
+     * Generate thumbnail. Resize the image in the process. It is possible that image not scale good
+     *
      * @param int $value
      */
     function thumbnail(int $value)
@@ -201,6 +215,8 @@ class GdGraphicsLibrary
     }
 
     /**
+     * Generate thumbnail. Not resize the image in the process.
+     *
      * @param int $value
      */
     function thumbnailPlus(int $value)
@@ -230,6 +246,8 @@ class GdGraphicsLibrary
     }
 
     /**
+     * Crop the image
+     *
      * @param int $cwidth
      * @param int $cheight
      * @param string $pos
