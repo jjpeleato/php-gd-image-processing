@@ -38,7 +38,8 @@ if ($size <= $file['size']) {
  * Upload file process
  */
 $path = $_SERVER['DOCUMENT_ROOT'].'/upload/';
-$baseName = $path . (new DateTime())->getTimestamp();
+$time = (new DateTime())->getTimestamp();
+$baseName = $path . $time;
 $baseFile = $baseName . $type;
 if (!move_uploaded_file($file['tmp_name'], $baseFile)) {
     new JsonResponse('exception', 'File upload failed.');
@@ -95,10 +96,21 @@ $gd->deleteImage();
  */
 $gd->setImage($baseFile);
 $crop = $baseName . '_crop' . $type;
-if ($gd->width>768 && $gd->height>768) {
+if ($gd->width > 768 && $gd->height > 768) {
     $gd->crop(768, 768, 'center');
 }
 $gd->save($crop, 90);
 $gd->deleteImage();
 
-new JsonResponse('ok', 'Successfully uploaded images');
+new JsonResponse(
+    'ok',
+    'Successfully uploaded images. Look this images.',
+    [
+        $time . $type,
+        $time . '_resize_width' . $type,
+        $time . '_resize_height' . $type,
+        $time . '_thumbnail' . $type,
+        $time . '_thumbnail_plus' . $type,
+        $time . '_crop' . $type
+    ]
+);

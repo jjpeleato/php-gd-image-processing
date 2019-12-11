@@ -109,7 +109,20 @@ function uploadActions() {
             },
             success: function (result, status, xhr) {
                 let respond = result.respond;
-                domResult.empty().append('<p class="success">'+respond+'</p>');
+                let html = '<p class="success">'+respond+'</p>';
+
+                let data = result.data;
+                if (data.length > 0) {
+                    html += '<ul>';
+                    jQuery.each(data, function(index, value) {
+                        html += '<li>';
+                        html += '<a href="/upload/' + value + '" target="_blank">' + value + '</a>';
+                        html += '</li>';
+                    });
+                    html += '</ul>';
+                }
+
+                domResult.empty().append(html);
             },
             error: function (xhr, status, error) {
                 let respond = xhr.responseJSON.respond;
