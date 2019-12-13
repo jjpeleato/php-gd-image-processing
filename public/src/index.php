@@ -102,6 +102,9 @@ if ($gd->width > 768 && $gd->height > 768) {
 $gd->save($crop, 90);
 $gd->deleteImage();
 
+/**
+ * Builder the response
+ */
 new JsonResponse(
     'ok',
     'Successfully uploaded images. Look this images.',
