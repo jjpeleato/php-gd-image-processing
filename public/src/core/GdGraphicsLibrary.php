@@ -6,6 +6,9 @@ namespace Application\Core;
 /**
  * Class GdGraphicsLibrary
  * @package Application\Core
+ * @author jjpeleato
+ *
+ * https://www.php.net/manual/en/book.image.php
  */
 class GdGraphicsLibrary
 {
@@ -30,7 +33,19 @@ class GdGraphicsLibrary
     public $height;
 
     /**
-     * Set the image
+     * Set the image for the next actions.
+     *
+     * Get the size of an image:
+     * https://www.php.net/manual/en/function.getimagesize.php
+     *
+     * Create a new JPEG image from file or URL:
+     * https://www.php.net/manual/en/function.imagecreatefromjpeg.php
+     *
+     * Create a new PNG image from file or URL:
+     * https://www.php.net/manual/en/function.imagecreatefrompng.php
+     *
+     * Create a new GIF image from file or URL:
+     * https://www.php.net/manual/en/function.imagecreatefromgif.php
      *
      * @param string $path
      */
@@ -55,7 +70,8 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Delete the image
+     * Destroy an image:
+     * https://www.php.net/manual/en/function.imagedestroy.php
      */
     function deleteImage()
     {
@@ -63,7 +79,16 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Save the image
+     * Save the image.
+     *
+     * Output GIF image to browser or file:
+     * https://www.php.net/manual/en/function.imagegif.php
+     *
+     * Output JPEG image to browser or file:
+     * https://www.php.net/manual/en/function.imagejpeg.php
+     *
+     * Output a PNG image to either the browser or a file:
+     * https://www.php.net/manual/en/function.imagepng.php
      *
      * @param string $path
      * @param int $quality
@@ -85,14 +110,19 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Save by type
+     * Save by type.
      *
-     * 1 - gif
-     * 2 - jpeg
-     * 3 - png
+     * Output GIF image to browser or file:
+     * https://www.php.net/manual/en/function.imagegif.php
+     *
+     * Output JPEG image to browser or file:
+     * https://www.php.net/manual/en/function.imagejpeg.php
+     *
+     * Output a PNG image to either the browser or a file:
+     * https://www.php.net/manual/en/function.imagepng.php
      *
      * @param string $path
-     * @param int $type
+     * @param int $type 1: GIF, 2: JPEG, 3: PNG
      * @param int $quality
      */
     function saveByType(string $path, int $type, int $quality = 100)
@@ -112,7 +142,16 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Show the image
+     * Show the image.
+     *
+     * Output GIF image to browser or file:
+     * https://www.php.net/manual/en/function.imagegif.php
+     *
+     * Output JPEG image to browser or file:
+     * https://www.php.net/manual/en/function.imagejpeg.php
+     *
+     * Output a PNG image to either the browser or a file:
+     * https://www.php.net/manual/en/function.imagepng.php
      */
     function show()
     {
@@ -130,10 +169,22 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Automatically resize the image
+     * Automatically resize the image.
+     *
+     * Create a new true color image:
+     * https://www.php.net/manual/en/function.imagecreatetruecolor.php
+     *
+     * Copy and resize part of an image with resampling:
+     * https://www.php.net/manual/en/function.imagecopyresampled.php
+     *
+     * Get image width:
+     * https://www.php.net/manual/en/function.imagesx.php
+     *
+     * Get image height:
+     * https://www.php.net/manual/en/function.imagesy.php
      *
      * @param int $value
-     * @param string $prop
+     * @param string $prop width|height
      */
     function resize(int $value, string $prop)
     {
@@ -183,7 +234,20 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Generate thumbnail. Resize the image in the process. It is possible that image not scale good
+     * Generate thumbnail. Resize the image in the process.
+     * It is possible that image not scale good.
+     *
+     * Create a new true color image:
+     * https://www.php.net/manual/en/function.imagecreatetruecolor.php
+     *
+     * Copy and resize part of an image with resampling:
+     * https://www.php.net/manual/en/function.imagecopyresampled.php
+     *
+     * Get image width:
+     * https://www.php.net/manual/en/function.imagesx.php
+     *
+     * Get image height:
+     * https://www.php.net/manual/en/function.imagesy.php
      *
      * @param int $value
      */
@@ -217,6 +281,18 @@ class GdGraphicsLibrary
     /**
      * Generate thumbnail. Not resize the image in the process.
      *
+     * Create a new true color image:
+     * https://www.php.net/manual/en/function.imagecreatetruecolor.php
+     *
+     * Allocate a color for an image:
+     * https://www.php.net/manual/en/function.imagecolorallocatealpha.php
+     *
+     * Flood fill:
+     * https://www.php.net/manual/en/function.imagefill.php
+     *
+     * Copy part of an image:
+     * https://www.php.net/manual/en/function.imagecopy.php
+     *
      * @param int $value
      */
     function thumbnailPlus(int $value)
@@ -246,7 +322,14 @@ class GdGraphicsLibrary
     }
 
     /**
-     * Crop the image
+     * Crop the image.
+     * Look the following information:
+     *
+     * Create a new true color image
+     * https://www.php.net/manual/en/function.imagecreatetruecolor.php
+     *
+     * Copy and resize part of an image with resampling
+     * https://www.php.net/manual/en/function.imagecopyresampled.php
      *
      * @param int $cwidth
      * @param int $cheight
