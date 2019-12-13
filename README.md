@@ -2,9 +2,9 @@
 
 Create and manipulate image files with PHP and the GD library of images.
 
-https://www.php.net/manual/en/book.image.php
+PHP is not limited to creating just HTML output. It can also be used to create and manipulate image files in a variety of different image formats, including GIF, PNG, JPEG, WBMP, and XPM. Even more conveniently, PHP can output image streams directly to a browser. You will need to compile PHP with the GD library of image functions for this to work.
 
-PHP is not limited to creating just HTML output. It can also be used to create and manipulate image files in a variety of different image formats, including GIF, PNG, JPEG, WBMP, and XPM. Even more conveniently, PHP can output image streams directly to a browser. You will need to compile PHP with the GD library of image functions for this to work. GD and PHP may also require other libraries, depending on which image formats you want to work with. 
+You can read more at the following link: https://www.php.net/manual/en/book.image.php
 
 **The main file is: `public/src/core/GdGraphicsLibrary.php`**
 
@@ -46,6 +46,8 @@ For more information visit:
 │  └─ .htaccess
 ├─ public/ # Public directory
 │  ├─ src/ # Source directory
+│  │  └─ core/
+│  │    └─ GdGraphicsLibrary.php # Main file
 │  ├─ upload/ # Uploading directory
 │  ├─ browserconfig.xml
 │  ├─ index.html
@@ -103,6 +105,7 @@ For more information visit:
 
 The present project uses several technologies and tools for the automation and development process. For more information and learning visit the following links.
 
+1. GD Library: https://www.php.net/manual/en/book.image.php
 1. Git: https://git-scm.com/
 2. Lando: https://docs.devwithlando.io/
 3. Composer: https://getcomposer.org/
@@ -125,7 +128,5 @@ The present project uses several technologies and tools for the automation and d
 ## Finally
 
 More information on the following commits. If required.
-
-I hope you find it useful.
 
 Grettings **@jjpeleato**.
